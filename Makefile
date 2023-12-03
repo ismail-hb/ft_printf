@@ -11,10 +11,11 @@ CFLAGS = -Wall -Werror -Wextra -I.
 
 all: $(NAME)
 
-$(NAME): $(OBJ) ft_printf.h
+$(NAME): $(OBJ) ft_printf.h libft/libft.a
 	ar rcs $(NAME) $(OBJ)
 
-
+libft/libft.a :
+	cd libft; make bonus; mv libft.a ../libftprintf.a
 #bonus:
 #	$(MAKE) $(NAME) SRC="$(SRC) $(SRC_BONUS)"
 
@@ -23,10 +24,12 @@ $(NAME): $(OBJ) ft_printf.h
 
 clean:
 	$(RM) $(OBJ)
+	cd libft; make clean
 #	$(RM) $(OBJ_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
+	cd libft; make fclean
 
 re: fclean all
 
