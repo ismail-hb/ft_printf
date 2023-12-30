@@ -70,7 +70,7 @@ int	ft_printf(const char *form, ...)
 			i++;
 			whichisit(form[i], args, &j);
 			if (j == -1)
-				return (j);
+				return (va_end(args), j);
 		}
 		else
 		{
@@ -80,5 +80,5 @@ int	ft_printf(const char *form, ...)
 		}
 		i++;
 	}
-	return (j);
+	return (va_end(args), j);
 }
